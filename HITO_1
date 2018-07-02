@@ -792,3 +792,12 @@ while j==1:
             eleccion_principal(Usuario)
         z=z+1
     break
+for i in user:
+     print("****************")
+     print(str(i)+"Es un nuevo miembro")
+     print("***********")
+r=0
+for i on range(1,len(user)+1):
+    r=r+1
+print("Ahora hay"+str(r)+"integrantes")
+    
