@@ -1,0 +1,795 @@
+a=int(input("Ingrese un número"))
+#Interfaz principal y definición de variables
+def interfaz():
+    print("1. Información ")
+    print("2. Empezar con contenido")
+    print("3. Ranking (PROXIMAMENTE)")
+    print("4. Ayuda")
+    print("5. Créditos")
+    print("6. Cambiar de usuario")
+    print("7. Salir")
+
+rango_de_elegir=["0","1","2","3","4","5","6","7"]
+
+
+def usuario(Usuario):
+    Usuarios[Usuario]=0
+    user=Usuarios.keys()
+    if len(Usuarios)>10:
+        del Usuarios[Usuario]
+        limpiar()
+        print("Ya existen 10 usuarios registrados")
+    return Usuarios,user
+
+#limpieza de pantalla
+def limpiar():
+    print("\n"*40)
+
+def limpiar2():
+    print("\n"*5)
+
+#Delimitación de :la elección de interfaz
+def eleccion_principal(Usuario):
+    limpiar()
+    global x
+    global y
+    x=1
+    y=1
+    print("\nBienvenido", Usuario,"\n")
+    interfaz()
+    elegir=input("\nElige una opción por favor: ")
+    Usuarios[Usuario]=elegir
+    if elegir not in rango_de_elegir:
+        limpiar()
+        print("Introduzca una elección valida\n")
+        while elegir not in rango_de_elegir:
+            interfaz()
+            elegir=input("\nElige una opción por favor: ")
+            break
+    elif elegir=="6":
+        x=0
+        limpiar()
+    elif elegir=="1":
+        Informacion()
+    elif elegir=="2":
+        Contenido()
+    elif elegir=="3":
+        Rankings()
+    elif elegir=="4":
+        Ayuda()
+    elif elegir=="5":
+        Creditos()
+    elif elegir=="7":
+        x=0
+        y=0
+        limpiar()
+        print("\tGracias por participar", Usuario, "\n\n\tTE ESPERAMOS DE VUELTA!!!")
+        limpiar2()
+    return x,y
+
+
+#Información
+def Informacion():
+    limpiar()
+    print("Este programa busca ser una herramienta para que los estudiantes de secundaria puedan iniciarse en el mundo "
+          "de la programación con el lenguaje Python de una forma amigable\n"
+          " esperamos sea de su agrado.\n")
+    limpiar2()
+    a=input("\n Introduzca 0 para volver al menú: ")
+    if a=="0":
+        limpiar()
+        eleccion_principal(Usuario)
+    else:
+        limpiar()
+        print("Por favor introduzca una opción valida")
+        a=input("\n Introduzca 0 para volver al menú: ")
+        if a!="0":
+            while a!="0":
+                limpiar()
+                print("Por favor introduzca una opción valida")
+                a=input("\n Introduzca 0 para volver al menú: ")
+        else:
+            limpiar()
+            eleccion_principal(Usuario)
+
+#Contenido
+
+def Contenido():
+        limpiar()
+        print("\n1.Variables")
+        print("2.Estructuras de control selectivas")
+        print("3.Estructuras de control repetitivas")
+        print("4.Listas")
+        print("5.Funciones")
+        print("6.Strings")
+        print("7.QUIZZES")
+        print("8.Volver al menú principal")
+        print("\n")
+        elegir= input ("Escoja una opción: ")
+        if elegir== "7":
+            limpiar()
+            Juego()
+        elif elegir == "6":
+            limpiar()
+            Strings()
+        elif elegir == "5":
+            limpiar()
+            Funciones()
+        elif elegir == "4":
+            limpiar()
+            Listas()
+        elif elegir == "3":
+            limpiar()
+            Repetitivas()
+        elif elegir == "2":
+            limpiar()
+            Selectivas()
+        elif elegir == "1":
+            limpiar()
+            Variables()
+        elif elegir== "8":
+            limpiar()
+            eleccion_principal(Usuario)
+        else:
+            limpiar()
+            Contenido()
+
+
+
+def Variables():
+    print("\t\t\t\tVARIABLES")
+    print(" ")
+    print("\nLas variables son de gran utilidad para su funcionamiento,"
+          "\nEste comando muestra el texto que pongamos, o incluso el valor"
+          "\nque hay dentro de una variable, usando la palabra (print)."
+          "\nPara el caso de los números, se debe tomar precaución de convertir"
+          "\nlos números a textos, o de números enteros a decimales, o viceversa."
+          "\n\nEjemplos de variables:"
+          "\nTipos de datos simples números: enteros, de coma flotante y complejos,"
+          "\ncomo pueden ser 3, 15.57 o 7 + 5j; cadenas de texto, como “Hola Mundo” "
+          "\ny valores booleanos: True (cierto) y False (falso).\n\n\n")
+
+    a=input("\n Introduzca 0 para volver al menú: ")
+    if a=="0":
+        limpiar()
+        Contenido()
+    else:
+        limpiar()
+        print("Por favor introduzca una opción valida")
+        a=input("\n Introduzca 0 para volver al menú de contenido : ")
+        if a!="0":
+            while a!="0":
+                limpiar()
+                print("Por favor introduzca una opción valida")
+                a=input("\n Introduzca 0 para volver al menú de contenido: ")
+        else:
+            limpiar()
+            Contenido()
+def Funciones():
+    print("\t\t\t\tFunciones")
+    print(" ")
+    print("Una función, es un conjunto de instrucciones que realizan alguna tarea y esta tarea se va a invocar mas de una "
+          "\nvez en un programa."
+          "\nA) Pueden recibir o no parámetros"
+          "\nB) Pueden retornar un valor o pueden no retornar ningún valor."
+          "\nEn Python, la definición de funciones se realiza mediante la instrucción (def) más un nombre de función descriptivo,"
+          "\npara el cual, aplican las mismas reglas que para el nombre de las variables, seguido de paréntesis de apertura y cierre."
+          "\nComo toda estructura de control en Python, la definición de la función finaliza con dos puntos (:) y el algoritmo que la "
+          "\ncompone, irá identado con 4 espacios:"
+          "\ndef mi_función():"
+          "\n     #aquí el algoritmo"
+          "\nUna función, no es ejecutada hasta tanto no sea invocada. Para invocar una función, simplemente se la llama por su nombre:"
+          "\ndef mi_función():" 
+            "\nprint (Hola Mundo) " 
+            "\nfunción() "
+          "\nCuando una función, haga un retorno de datos, estos, pueden ser asignados a una variable:" 
+          "\ndef función(): "
+                "\nreturn (Hola Mundo)" 
+          "\nfrase = función()" 
+          "\nprint frase")
+    a=input("\n\n\n Introduzca 0 para volver al menú: ")
+    if a=="0":
+        limpiar()
+        Contenido()
+    else:
+        limpiar()
+        print("Por favor introduzca una opción valida")
+        a=input("\n Introduzca 0 para volver al menú de contenido : ")
+        if a!="0":
+            while a!="0":
+                limpiar()
+                print("Por favor introduzca una opción valida")
+                a=input("\n Introduzca 0 para volver al menú de contenido: ")
+        else:
+            limpiar()
+            Contenido()
+def Listas():
+    print("\t\t\t\t\tLISTAS")
+    print(" ")
+    print("Son una secuencias mutables y vienen dotadas de una variedad de operaciones muy útiles. "
+          "\nLa notación de una lista son los corchetes, separados cada valor por una coma."
+          "\nNo interesa que se repitan los valores."
+          "\n\n>>> Lista [55,11,40,50]"
+           "\nA ellas también se les puede aplicar distintas funciones, como 'len()',"
+          "\npara conocer su longitud o cantidad de valores que tiene en la lista, considerando que 'len()' cuenta desde cero"
+          "y no desde uno."
+           "\nOtra es la notación de rangos, donde podemos hacer una lista de la primera lista, una sublista."
+            "\n\n>>> Lista [1:2]"
+            "\n[11]"
+        "\n\nPara agregar un nuevo valor al final de la lista,se utiliza la función 'append()'"
+        "\n\n>>> Lista.append(90)"
+        "\nLista [55,11,40,50,90]"
+        "\n\nPara agregar un nuevo valor en un índice 'k', desplazando un lugar el resto de la lista, se utiliza la operación 'insert()'"
+        "\nPara eliminar un valor de la lista, se utiliza el 'remove()'. Pero si el valor no existe, se produce un error."
+        "\n\n>>> Lista.remove(55)"
+        "\nLista [11,40,50,90]")
+    a=input("\n\n\n Introduzca 0 para volver al menú: ")
+    if a=="0":
+        limpiar()
+        Contenido()
+    else:
+        limpiar()
+        print("Por favor introduzca una opción valida")
+        a=input("\n Introduzca 0 para volver al menú de contenido : ")
+        if a!="0":
+            while a!="0":
+                limpiar()
+                print("Por favor introduzca una opción valida")
+                a=input("\n Introduzca 0 para volver al menú de contenido: ")
+        else:
+            limpiar()
+            Contenido()
+
+def Strings():
+    print("\t\t\t\tSTRINGS")
+    print(" ")
+    print("\n Strings o cadena de caracteres, consiste precisamente en una serie de signos o caracteres (letras, números, signos o símbolos)."
+          "\n se utilizan habitualmente como un tipo de dato predefinido, para palabras, frases o cualquier otra sucesión de caracteres."
+          "\n Podemos crear una cadena de caracteres simplemente encerrando el contenido entre comillas simple, doble o triples"
+          "\n después de un signo de igual (=)"
+          "\n\n>>>cadena_simple = '''Bienvenido a Python''' "
+          "\n Un tipo de operador que tiene el string son de adición y multiplicación. Una forma de manipular cadenas de caracteres es utilizar operadores de cadenas de caracteres. Dichos operadores se representan con símbolos que asociamos a las matemáticas, como +, -, *, / y =. Estos signos realizan acciones similares a sus contrapartes matemáticas cuando se usan con las cadenas de carateres, aunque no iguales. "
+          "\n\n\n")
+
+    a = input("\n Introduzca 0 para volver al menú: ")
+    if a == "0":
+        limpiar()
+        Contenido()
+    else:
+        limpiar()
+        print("Por favor introduzca una opción valida")
+        a = input("\n Introduzca 0 para volver al menú de contenido : ")
+        if a != "0":
+            while a != "0":
+                limpiar()
+                print("Por favor introduzca una opción valida")
+                a = input("\n Introduzca 0 para volver al menú de contenido: ")
+        else:
+            limpiar()
+            Contenido()
+def Repetitivas():
+    print("\t\t\t\tESTRUCTURAS REPETITIVAS")
+    print(" ")
+    print("Para realizar bucles, Python nos da dos estructuras, (for, while)."
+          "\nEl bucle while se ejecuta mientras la condición sea cierta, si la condición es falsa al inicio, "
+          "\nel bloque no se ejecuta y se pasan a ejecutar las sentencias que le siguen. "
+          "\nCualquier valor entero distinto de cero es verdadero y 0 es falso. De este modo, en while se puede"
+          "\nagrupar los datos de distintas formas."
+          "\n---- for i in range(0,cant) ----"
+          "\nSe ejecuta el bloque (cant) veces, comenzando la variable i adoptando el valor 0; en las siguientes "
+          "\niteraciones el valor se va incrementando hasta tomar el valor (cant-1). El for de Python también recorre "
+          "\nlos elementos de una secuencia, ya sea lista o cadena, en el orden en que estos aparecen en la misma.\n\n\n")
+    a=input("\n Introduzca 0 para volver al menú: ")
+    if a=="0":
+        limpiar()
+        Contenido()
+    else:
+        limpiar()
+        print("Por favor introduzca una opción valida")
+        a=input("\n Introduzca 0 para volver al menú de contenido : ")
+        if a!="0":
+            while a!="0":
+                limpiar()
+                print("Por favor introduzca una opción valida")
+                a=input("\n Introduzca 0 para volver al menú de contenido: ")
+        else:
+            limpiar()
+            Contenido()
+def Selectivas():
+    print("\t\t\t\tESTRUCTURAS SELECTIVAS")
+    print(" ")
+    print("Tenemos distintas estructuras (if, else, elif), en la que se encarga de poner condiciones al sistema, "
+          "\nsiendo de tipo booleano. El (if) siempre va antes del (else, elif), mientras que si solo quieres poner "
+          "\nuna condición, continuas con el (else), pero si quieres hacer una estructura con varias condiciones, se usa el (elif)."
+          "\n--if <<CONDICIÓN>>:"
+          "\n--else:"
+          "\n"
+          "\n--if <<CONDICIÓN>>:"
+          "\n--elif <<CONDICIÓN>>:"
+          "\n--elif <<CONDICIÓN>>:"
+          "\n--else:\n\n\n")
+
+    a=input("\n Introduzca 0 para volver al menú: ")
+    if a=="0":
+        limpiar()
+        Contenido()
+    else:
+        limpiar()
+        print("Por favor introduzca una opción valida")
+        a=input("\n Introduzca 0 para volver al menú de contenido : ")
+        if a!="0":
+            while a!="0":
+                limpiar()
+                print("Por favor introduzca una opción valida")
+                a=input("\n Introduzca 0 para volver al menú de contenido: ")
+        else:
+            limpiar()
+            Contenido()
+
+def Juego():
+    limpiar()
+    print("\n\n\n1.Variables")
+    print("2.Estructuras de control selectivas")
+    print("3.Estructuras de control repetitivas")
+    print("4.Listas")
+    print("5.Funciones\n\n")
+    A=input("Elige un tema para empezar a jugar o presione 0 si desea volver: ")
+    if A=="0":
+        limpiar()
+        Contenido()
+    elif A=="1":
+        Juegos_de_Variables()
+    elif A=="2":
+        Juegos_de_Selectivas()
+    elif A=="3":
+        Juegos_de_Repetitivas()
+    elif A=="4":
+        Juegos_de_Listas()
+    elif A=="5":
+        Juegos_de_Funciones()
+    else:
+        limpiar()
+        print("Ingresa una opción valida\n\n")
+        Juego()
+
+def Juegos_de_Variables():
+    Respuestas_Variables=['print("Hola")',"1","1","e", "print('Hola')"]
+    global suma_variables
+    suma_variables=0
+    limpiar()
+    pregunta1=input("1.Cuál seria la instrucción para imprimir 'Hola'?\n ")
+    if pregunta1==Respuestas_Variables[0] or pregunta1== Respuestas_Variables[4]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_variables=suma_variables+1
+    else:
+        print('\n Respuesta incorrecta\n\nLa respuesta es print("Hola")')
+        limpiar2()
+    print("\n2.El float es un tipo de variable?\nPresiona 1 si es verdadero y 0 si es falso\n")
+    print("\t1.Verdadero")
+    print("\t0.Falso")
+    pregunta2=input("\n\nElige tu respuesta: ")
+    if pregunta2==Respuestas_Variables[1]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_variables=suma_variables+2
+    elif pregunta2=="0":
+        print("\n\nRespuesta Incorrecta. Era verdadero")
+        limpiar2()
+    else:
+        print("\n\nIntrodujiste una opción invalida,será considerada como incorrecta\n La respuesta es verdadero")
+        limpiar2()
+    print("3. ¿Si ejecutamos el siguiente código cuál sería la salida?\n")
+    print("a=7")
+    print("print(a+b)")
+    print("\n\n")
+    print("1. b is not defined")
+    print("2. Imprimirá un 2")
+    print("3. Imprimirá una a")
+    print("4. No imprimirá nada\n\n")
+    pregunta3=input("Elige una respuesta (1-4): ")
+    if pregunta3==Respuestas_Variables[2]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_variables=suma_variables+3
+    else:
+        print("\nRespuesta incorrecta")
+        print("La respuesta correcta es 'b is not defined' ")
+        limpiar2()
+    print("\t\tULTIMA PREGUNTA!\n\n\n")
+    print("a='Pregunta'")
+    print("print(a[2])\n\n")
+    pregunta4=input("Cuál sería su salida: ")
+    if pregunta4==Respuestas_Variables[3]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_variables=suma_variables+4
+    else:
+        print("\n\nRespuesta incorrecta")
+        print("\nLa respuesta correcta es 'e' ya que se ubica en la posición 2. Recuerda que la numeración empieza en 0")
+        limpiar2()
+    print("Has terminado este quizz sobre variables")
+    print("\nTu puntaje obtenido es ",suma_variables)
+    A=input("\n\nIngresa cualquier tecla para volver al menú de juego: ")
+    if A=="0":
+        limpiar()
+        Juego()
+    else :
+        limpiar()
+        Juego()
+    return suma_variables
+
+def Juegos_de_Funciones():
+    Respuestas_funciones=['def Hola():',"0","1","1"]
+    global suma_funciones
+    limpiar()
+    suma_funciones=0
+    limpiar()
+    pregunta1=input("1.Cuál seria la forma correcta para definir una función llamada 'Hola'?\n ")
+    if pregunta1==Respuestas_funciones[0]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_funciones=suma_funciones+1
+    else:
+        print('\n Respuesta incorrecta\n\nLa respuesta es "def Hola():" ')
+        limpiar2()
+    print("\n2.Es obligatorio entregar parámetros en una función?\nPresiona 1 si es verdadero y 0 si es falso\n")
+    print("\t1.Verdadero")
+    print("\t0.Falso")
+    pregunta2=input("\n\nElige tu respuesta: ")
+    if pregunta2==Respuestas_funciones[1]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_funciones=suma_funciones+2
+    elif pregunta2=="1":
+        print("\n\nRespuesta Incorrecta. Era falso")
+        limpiar2()
+    else:
+        print("\n\nIntrodujiste una opción invalida,será considerada como incorrecta\n La respuesta es falso")
+        limpiar2()
+    print("3. ¿Si ejecutamos el siguiente código cuál sería la salida?\n")
+    print("def sumar(num1,num2):")
+    print("\t print(num1+num2)")
+    print("sumar(3,4)")
+    print("\n\n")
+    print("1. Imprimirá 7")
+    print("2. Imprimirá 3+4")
+    print("3. Imprimirá num1+num2")
+    print("4. Imprimirá sumar\n\n")
+    pregunta3=input("Elige una respuesta (1-4): ")
+    if pregunta3==Respuestas_funciones[2]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_funciones=suma_funciones+3
+    else:
+        print("\nRespuesta incorrecta")
+        print("La respuesta correcta es que imprimirá un 7. ")
+        limpiar2()
+    print("\t\tULTIMA PREGUNTA!\n\n\n")
+    print("Un return puede ser almacenado como variable?")
+    print("\n\n")
+    pregunta4=input("Presione 1 si es verdadero o 0 si es falso: ")
+    if pregunta4==Respuestas_funciones[3]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_funciones=suma_funciones+4
+    else:
+        print("\n\nRespuesta incorrecta")
+        print("\nLa respuesta correcta es que si puede ser almacenado como una variable")
+        limpiar2()
+    print("Has terminado este quizz sobre funciones")
+    print("\nTu puntaje obtenido es ",suma_funciones)
+    A=input("\n\nIngresa cualquier tecla para volver al menú de juego: ")
+    if A=="0":
+        limpiar()
+        Juego()
+    else :
+        limpiar()
+        Juego()
+    return suma_funciones
+
+def Juegos_de_Repetitivas():
+    Respuestas_repetitivas=['while x>10:',"1","1","0"]
+    global suma_repetitivas
+    limpiar()
+    suma_repetitivas=0
+    pregunta1=input("1.Cuál sería la forma correcta de decir mientras la variable x sea mayor que 10, use 'while'?\n ")
+    if pregunta1==Respuestas_repetitivas[0]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_repetitivas=suma_repetitivas+1
+    else:
+        print('\n Respuesta incorrecta\n\nLa respuesta es "while x>10:" ')
+        limpiar2()
+    print("\n2.Existe forma de detener una estructura repetitiva?\n")
+    print("\t1.Verdadero")
+    print("\t0.Falso")
+    pregunta2=input("\n\nElige tu respuesta: ")
+    if pregunta2==Respuestas_repetitivas[1]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_repetitivas=suma_repetitivas+2
+    elif pregunta2=="0":
+        print("\n\nRespuesta Incorrecta. Era verdadero ya que se puede detener con un 'break' ")
+        limpiar2()
+    else:
+        print("\n\nIntrodujiste una opción invalida,será considerada como incorrecta\n La respuesta es verdadero")
+        limpiar2()
+    print("3. ¿Si ejecutamos el siguiente código cuál sería la salida?\n")
+    print("x=0")
+    print("while x<1:")
+    print("\tprint(x)")
+    print("\n\n")
+    print("1. Imprimirá 0 indefinidamente")
+    print("2. Imprimirá x indefinidamente")
+    print("3. Imprimirá x una vez ")
+    print("4. Imprimirá 0 una sola vez")
+    pregunta3=input("Elige una respuesta (1-4): ")
+    if pregunta3==Respuestas_repetitivas[2]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_repetitivas=suma_repetitivas+3
+    else:
+        print("\nRespuesta incorrecta")
+        print("La respuesta correcta es que imprimirá 0 indefinidamente ")
+        limpiar2()
+    print("\t\tULTIMA PREGUNTA!\n\n\n")
+    print("La estructura 'for' presenta ventajas sobre la estructura 'while'")
+    print("\n\n")
+    pregunta4=input("Presione 1 si es verdadero o 0 si es falso: ")
+    if pregunta4==Respuestas_repetitivas[3]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_repetitivas=suma_repetitivas+4
+    else:
+        print("\n\nRespuesta incorrecta")
+        print("\nLa respuesta correcta es que ambas son igual de eficaces pero cual usar dependerá del problema a atacar.")
+        limpiar2()
+    print("Has terminado este quizz sobre estructuras repetitivas")
+    print("\nTu puntaje obtenido es ",suma_repetitivas)
+    A=input("\n\nIngresa cualquier tecla para volver al menú de juego: ")
+    if A=="0":
+        limpiar()
+        Juego()
+    else :
+        limpiar()
+        Juego()
+    return suma_repetitivas
+
+def Juegos_de_Listas():
+    Respuestas_listas=['L=["a","b"]',"1","1","1"]
+    global suma_listas
+    limpiar()
+    suma_listas=0
+    pregunta1=input("Cuál seria la forma correcta de escribir una lista con nombre 'L' que contenga las letras 'a' y 'b' ?\n ")
+    if pregunta1==Respuestas_listas[0]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_listas=suma_listas+1
+    else:
+        print('\n Respuesta incorrecta\n\nLa respuesta es L=["a","b"] ')
+        limpiar2()
+    print("\n2.Existe forma de ordenar una lista por orden alfabetico y/o numérico?\n")
+    print("\t1.Verdadero")
+    print("\t0.Falso")
+    pregunta2=input("\n\nElige tu respuesta: ")
+    if pregunta2==Respuestas_listas[1]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_listas=suma_listas+2
+    elif pregunta2=="0":
+        print("\n\nRespuesta Incorrecta. Era verdadero ya que se puede ordenar con 'L.sort()' ")
+        limpiar2()
+    else:
+        print("\n\nIntrodujiste una opción invalida,será considerada como incorrecta\n La respuesta era verdadero")
+        limpiar2()
+    print("3. ¿Si ejecutamos el siguiente código cuál sería la salida?\n")
+    print("x=0")
+    print("L=[]")
+    print("L.append(x)")
+    print("print(L)\n\n")
+    print("1. Imprimirá 0")
+    print("2. Imprimirá x")
+    print("3. Imprimirá 'L=[]'")
+    print("4. No imprimirá nada")
+    pregunta3=input("Elige una respuesta (1-4): ")
+    if pregunta3==Respuestas_listas[2]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_listas=suma_listas+3
+    else:
+        print("\nRespuesta incorrecta")
+        print("La respuesta correcta es que imprimirá 0")
+        limpiar2()
+    print("\t\tULTIMA PREGUNTA!\n\n\n")
+    print("Si coloco print(L[0]) en una lista sin elementos saldrá error")
+    print("\n\n")
+    pregunta4=input("Presione 1 si es verdadero o 0 si es falso: ")
+    if pregunta4==Respuestas_listas[3]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_listas=suma_listas+4
+    else:
+        print("\n\nRespuesta incorrecta")
+        print("\nLa respuesta correcta es que saldrá error porque no existe tal elemento para imprimir.")
+        limpiar2()
+    print("Has terminado este quizz sobre estructuras repetitivas")
+    print("\nTu puntaje obtenido es ",suma_listas)
+    A=input("\n\nIngresa cualquier tecla para volver al menú de juego: ")
+    if A=="0":
+        limpiar()
+        Juego()
+    else :
+        limpiar()
+        Juego()
+    return suma_listas
+
+def Juegos_de_Selectivas():
+    Respuestas_selectivas=['if x=="1":',"1","1","1"]
+    global suma_selectivas
+    limpiar()
+    suma_selectivas=0
+    pregunta1=input("Cuál seria la forma correcta de decir si la variable x es igual a 1 (toma 1 como caracter)?\n ")
+    if pregunta1==Respuestas_selectivas[0]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_selectivas=suma_selectivas+1
+    else:
+        print('\n Respuesta incorrecta\n\nLa respuesta es  if x=="1": ')
+        limpiar2()
+    print("\n2.Un 'else' no requiere condición ?\n")
+    print("\t1.Verdadero")
+    print("\t0.Falso")
+    pregunta2=input("\n\nElige tu respuesta: ")
+    if pregunta2==Respuestas_selectivas[1]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_selectivas=suma_selectivas+2
+    elif pregunta2=="0":
+        print("\n\nRespuesta Incorrecta. Era verdadero ya que un 'else' no requiere condición ")
+        limpiar2()
+    else:
+        print("\n\nIntrodujiste una opción invalida,será considerada como incorrecta\n La respuesta era verdadero")
+        limpiar2()
+    print("3. ¿Si ejecutamos el siguiente código cuál sería la salida?\n")
+    print("x=0")
+    print("if x!=0:")
+    print("\tprint(x)")
+    print("else:\n\tprint('X es 0')")
+    print("\n\n1. Imprimirá X es 0")
+    print("2. Imprimirá x")
+    print("3. Imprimirá ambas cosas")
+    print("4. No imprimirá nada")
+    pregunta3=input("Elige una respuesta (1-4): ")
+    if pregunta3==Respuestas_selectivas[2]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_selectivas=suma_selectivas +3
+    else:
+        print("\nRespuesta incorrecta")
+        print("La respuesta correcta es que imprimirá X es 0")
+        limpiar2()
+    print("\t\tULTIMA PREGUNTA!\n\n\n")
+    print("Se puede reemplazar if's anidados con 'elif'? ")
+    print("\n\n")
+    pregunta4=input("Presione 1 si es verdadero o 0 si es falso: ")
+    if pregunta4==Respuestas_selectivas[3]:
+        print("\n\nRespuesta correcta")
+        limpiar2()
+        suma_selectivas=suma_selectivas+4
+    else:
+        print("\n\nRespuesta incorrecta")
+        print("\nLa respuesta correcta es que si se puede reemplazar con dicha estructura.")
+        limpiar2()
+    print("Has terminado este quizz sobre estructuras repetitivas")
+    print("\nTu puntaje obtenido es ",suma_selectivas)
+    A=input("\n\nIngresa cualquier tecla para volver al menú de juego: ")
+    if A=="0":
+        limpiar()
+        Juego()
+    else :
+        limpiar()
+        Juego()
+    return suma_selectivas
+
+
+def Rankings():
+    limpiar()
+    print("\t\t\tRANKING DE PUNTAJES ")
+    for x in Usuarios:
+        print("\n",x)
+    limpiar2()
+    limpiar2()
+    a=input("\n Introduzca 0 para volver al menú: ")
+    if a=="0":
+        limpiar()
+        eleccion_principal(Usuario)
+    else:
+        limpiar()
+        print("Por favor introduzca una opción valida")
+        a=input("\n Introduzca 0 para volver al menú: ")
+        if a!="0":
+            while a!="0":
+                limpiar()
+                print("Por favor introduzca una opción valida")
+                a=input("\n Introduzca 0 para volver al menú: ")
+        else:
+            limpiar()
+            eleccion_principal(Usuario)
+
+def Ayuda():
+    limpiar()
+    print("Este programa ha sido diseñado para enseñarte a programar, por favor en cada paso, lee con detenimiento"
+          "\nque te piden presionar exactamente. Luego de eso, introduce la tecla que accione lo que desees realizar."
+          "\nFinalmente, presiona ENTER")
+    print("\n\nTodos los quizzes son sobre 10 puntos.")
+    print("\n\nLas acciones de cambio de usuario y salir de programa requieren confirmación por cuestiones de seguridad")
+    limpiar2()
+    a=input("\n Introduzca 0 para volver al menú: ")
+    if a=="0":
+        limpiar()
+        eleccion_principal(Usuario)
+    else:
+        limpiar()
+        print("Por favor introduzca una opción valida")
+        a=input("\n Introduzca 0 para volver al menú: ")
+        if a!="0":
+            while a!="0":
+                limpiar()
+                print("Por favor introduzca una opción valida")
+                a=input("\n Introduzca 0 para volver al menú: ")
+        else:
+            limpiar()
+            eleccion_principal(Usuario)
+
+def Creditos():
+    limpiar()
+    print("Este aplicación fue programada y diseñada por Fabrizio Franco, Valeria Abad y James Gonzales para"
+          "\n el curso de Introducción a  Ciencia de la Computación. Nosotros somos estudiantes de primer ciclo"
+          "\n de UTEC.")
+    limpiar2()
+    a=input("\n Introduzca 0 para volver al menú: ")
+    if a=="0":
+        limpiar()
+        eleccion_principal(Usuario)
+    else:
+        limpiar()
+        print("Por favor introduzca una opción valida")
+        a=input("\n Introduzca 0 para volver al menú: ")
+        if a!="0":
+            while a!="0":
+                limpiar()
+                print("Por favor introduzca una opción valida")
+                a=input("\n Introduzca 0 para volver al menú: ")
+        else:
+            limpiar()
+            eleccion_principal(Usuario)
+
+
+
+#EJECUCIÓN DEL PROGRAMA
+j=1
+y=1
+z=0
+Usuarios={}
+user=[]
+while j==1:
+    while y==1:
+        suma_variables=0
+        suma_repetitivas=0
+        suma_selectivas=0
+        suma_listas=0
+        suma_funciones=0
+        suma_strings=0
+        SUMA=0
+        print("\t\t\t\t\tBienvenido al mundo del Python\n")
+        if z!=0:
+            limpiar2()
+            limpiar2()
+        Usuario=input("Ingrese su usuario, por favor: ")
+        usuario(Usuario)
+        x=1
+        while x==1:
+            eleccion_principal(Usuario)
+        z=z+1
+    break
